@@ -1,0 +1,24 @@
+<!-- <p>navbar works!</p>
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+  </div>
+</nav>
+
+<br> -->
+
+<mat-toolbar color="primary">
+  <!-- <span>Navbar</span> -->
+  <a mat-flat-button color="primary" id="home">
+    <span id="home-name">Blog</span>
+  </a>
+  <span class="nav-spacer"></span>
+
+  <a mat-flat-button color="primary" class="aboutus">About Us</a>
+
+  <a mat-flat-button color="primary" [matMenuTriggerFor]="login">Signup/Login</a>
+  <mat-menu #login="matMenu">
+    <button mat-menu-item class="auth auth-login">Login</button>
+    <button mat-menu-item class="auth auth-signup">Signup</button>
+  </mat-menu>
+</mat-toolbar>
