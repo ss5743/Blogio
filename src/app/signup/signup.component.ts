@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../services/auth-service.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit{
 
+  //isSignedIn = false;
   email:string=''
   password:string=''
-  // isSignedIn = false;
+
   constructor(private auth: AuthServiceService){}
 
   ngOnInit(): void {
@@ -20,14 +21,10 @@ export class LoginComponent implements OnInit {
     //   this.isSignedIn=false
   }
 
-  signingIn(){
-    this.auth.signIn(this.email,this.password)
+  signingUp(){
+    this.auth.signUp(this.email,this.password)
     // if(this.auth.isLoggedIn)
     //   this.isSignedIn=true
   }
 
-  // logUserOut(){
-  //   this.auth.logOut()
-  //   this.isSignedIn=false
-  // }
 }

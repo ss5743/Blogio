@@ -10,15 +10,21 @@
 <mat-toolbar color="primary">
   <!-- <span>Navbar</span> -->
   <a mat-flat-button color="primary" id="home">
-    <span id="home-name">Blog</span>
+    <span id="home-name">Blogio</span>
   </a>
   <span class="nav-spacer"></span>
 
   <a mat-flat-button color="primary" class="aboutus">About Us</a>
 
-  <a mat-flat-button color="primary" [matMenuTriggerFor]="login">Signup/Login</a>
-  <mat-menu #login="matMenu">
-    <button mat-menu-item class="auth auth-login">Login</button>
-    <button mat-menu-item class="auth auth-signup">Signup</button>
-  </mat-menu>
+  <ng-container *ngIf="isLogged()">
+    <a mat-flat-button color="primary" (click)="loggingOut()">Logout</a>
+  </ng-container>
+
+  <ng-container *ngIf="!isLogged()">
+    <a mat-flat-button color="primary" [matMenuTriggerFor]="login">Signup/Login</a>
+    <mat-menu #login="matMenu">
+      <button mat-menu-item class="auth auth-login" routerLink="/login">Login</button>
+      <button mat-menu-item class="auth auth-signup" routerLink="/signup">Signup</button>
+    </mat-menu>
+  </ng-container>
 </mat-toolbar>

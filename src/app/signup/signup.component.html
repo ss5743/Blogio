@@ -5,14 +5,14 @@
       <form class="login" #f>
         <div class="login__field">
           <i class="login__icon fas fa-user"></i>
-          <input type="text" class="login__input" name="email" placeholder="Email" [(ngModel)]="email">
+          <input type="text" name="email" class="login__input" placeholder="Email" [(ngModel)]="email" required>
         </div>
         <div class="login__field">
           <i class="login__icon fas fa-lock"></i>
-          <input type="password" class="login__input" name="password" placeholder="Password" [(ngModel)]="password">
+          <input type="password" name="password" class="login__input" placeholder="Password" [(ngModel)]="password">
         </div>
-        <button class="button login__submit" (click)="signingIn()">
-          <span class="button__text">Log In Now</span>
+        <button class="button login__submit" (click)="signingUp()">
+          <span class=" button__text">Sign Up Now</span>
           <i class="button__icon fas fa-chevron-right"></i>
         </button>
       </form>
@@ -27,9 +27,9 @@
       </div>
 
       <div class="signup create">
-        <h5>Do not have an account?</h5>
-        <a routerLink="/signup" class="create-acc">
-          <h5>Create one</h5>
+        <h5>Already have an account?</h5>
+        <a routerLink="/login" class="create-acc">
+          <h5>Log in here</h5>
         </a>
       </div>
 
