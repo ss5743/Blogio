@@ -1,35 +1,55 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import firebase from 'firebase/compat';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SignupComponent } from '../signup/signup.component';
+import { UserService } from '../roles/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
+  lUserId:string|undefined = '';
   isLoggedIn = false;
-  constructor(private fireAuth: AngularFireAuth, private router:Router) { }
+  constructor(private fireAuth: AngularFireAuth, private router:Router, private arouter: ActivatedRoute, private db: AngularFireDatabase, private userservice:UserService) { }
 
-  signUp(email:string, password:string){
+  getCurrentUserId():string|undefined{
+    return this.lUserId
+  }
+
+  signUp(email:string, password:string,uname:string){
     this.isLoggedIn=true;
     this.fireAuth.createUserWithEmailAndPassword(email,password)
-      .then(res=>{
-        localStorage.setItem('token','true')
-        this.router.navigate(['/aboutme'])
-      }, err=>{
-        alert("Use valid email and password")
-      })
-  }
+      .then(userCred=>{
+         this.userservice.saveUser(userCred)
+          .set({
+            email:email,
+            userid:userCred.user?.uid,
+            username:uname
+          })
+          this.lUserId=userCred.user?.uid
+          localStorage.setItem('token','true')
+          this.router.navigate([userCred.user?.uid+'/aboutme/'])
+        }, err=>{
+          alert("Use valid email and password")
+        })
+    }
+  
 
   signIn(email:string,password:string){
     this.isLoggedIn=true;
     this.fireAuth.signInWithEmailAndPassword(email,password)
-      .then(res=>{
-        this.router.navigate(['/aboutme'])
+      .then(userCred=>{
+        // this.router.navigate([userCred.user?.uid+'/aboutme/'])
+        this.router.navigate(['/home'])  
+        this.lUserId=userCred.user?.uid
         localStorage.setItem('token','true')
       }, err=>{
         alert("Invalid email or  password")
       })
+      
   }
 
   logOut(){
@@ -37,6 +57,7 @@ export class AuthServiceService {
     this.fireAuth.signOut()
       .then(res=>{
         localStorage.removeItem('token')
+        this.lUserId=""
         this.router.navigate(['/login'])
       }, err=>{
         alert(err.message)

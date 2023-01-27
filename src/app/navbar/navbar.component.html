@@ -9,12 +9,12 @@
 
 <mat-toolbar color="primary">
   <!-- <span>Navbar</span> -->
-  <a mat-flat-button color="primary" id="home">
+  <a href="#" mat-flat-button color="primary" id="home">
     <span id="home-name">Blogio</span>
   </a>
   <span class="nav-spacer"></span>
 
-  <a mat-flat-button color="primary" class="aboutus">About Us</a>
+  <a mat-flat-button color="primary" class="aboutus" routerLink="/aboutus">About Us</a>
 
   <ng-container *ngIf="isLogged()">
     <a mat-flat-button color="primary" (click)="loggingOut()">Logout</a>

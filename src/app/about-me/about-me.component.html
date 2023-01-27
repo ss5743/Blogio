@@ -1,1 +1,70 @@
-<p>about-me works!</p>
+<div class="container">
+  <div class="content-area">
+
+    <span>Enter your details</span>
+
+    <form #f="ngForm" (ngSubmit)="submit(f.value,f)">
+      <!-- username -->
+      <div class="form-group input-group">
+        <label for="uname">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Name</span>
+          </div>
+        </label>
+        <input type="text" class="form-control" name="uname" id="uname" value={{username}} disabled>
+      </div>
+
+      <!-- email -->
+      <div class="form-group input-group">
+        <label for="uemail">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Email</span>
+          </div>
+        </label>
+        <input type="text" class="form-control" name="uemail" id="uemail" value={{email}} disabled>
+      </div>
+
+      <!-- gender -->
+      <div class="form-group input-group">
+        <label for="gender">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Gender</span>
+          </div>
+        </label>
+        <select class="form-control" name="gender" id="gender" [(ngModel)]="gender" required>
+          <option selected disabled hidden>Select your gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+
+      <!-- country -->
+      <div class="form-group input-group">
+        <label for="country">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Country</span>
+          </div>
+        </label>
+        <input type="text" class="form-control" name="country" id="country" placeholder="Enter your country"
+          [(ngModel)]="country" required>
+      </div>
+
+      <!-- short intro -->
+      <div class="form-group input-group">
+        <label for="uintro">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Short intro</span>
+          </div>
+        </label>
+        <!-- <textarea class="form-control" name="uintro" id="uintro" rows="2"></textarea> -->
+        <input type="textarea" class="form-control" name="intro" id="intro" [(ngModel)]="intro" required>
+      </div>
+
+      <!-- submit -->
+      <button type="submit" class="btn btn-primary btn-submit" [disabled]="!f.valid">Submit</button>
+      <!-- <button type="reset" class="btn btn-primary btn-reset">Reset</button> -->
+
+    </form>
+  </div>
+</div>

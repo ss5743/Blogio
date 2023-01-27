@@ -11,8 +11,13 @@ export class SignupComponent implements OnInit{
   //isSignedIn = false;
   email:string=''
   password:string=''
+  uname:string=''
 
-  constructor(private auth: AuthServiceService){}
+  constructor(private auth: AuthServiceService){
+
+    
+
+  }
 
   ngOnInit(): void {
     // if(localStorage.getItem('user')!==null)
@@ -22,7 +27,8 @@ export class SignupComponent implements OnInit{
   }
 
   signingUp(){
-    this.auth.signUp(this.email,this.password)
+    this.auth.signUp(this.email,this.password, this.uname)
+    // this.userservice.save()
     // if(this.auth.isLoggedIn)
     //   this.isSignedIn=true
   }

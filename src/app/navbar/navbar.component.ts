@@ -13,10 +13,6 @@ export class NavbarComponent implements OnInit {
 
   
   isLogged(){
-    // if(localStorage.getItem('token')!==null)
-    //   this.isLoggedIn = true
-    // else
-    //   this.isLoggedIn = false
     return this.auth.isLoggedIn
   }
   

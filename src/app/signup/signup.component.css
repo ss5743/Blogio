@@ -3,6 +3,7 @@
 	margin: 0;
 	padding: 0;	
 	font-family: Raleway, sans-serif;
+	/* overflow: hidden; */
 }
 
 body {
@@ -14,10 +15,14 @@ body {
 
 .container {
 	display: flex;
+	margin: 0;
+	padding: 0%;
 	align-items: center;
 	justify-content: center;
 	background-color: #6C63AC;
 	height: 100vh;
+	min-width: 100vw;
+	overflow: hidden;
 }
 
 .screen {		
@@ -89,7 +94,7 @@ body {
 .login {
 	width: 320px;
 	padding: 30px;
-	padding-top: 156px;
+	padding-top: 116px;
 }
 
 .login__field {

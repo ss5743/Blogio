@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     //   this.isSignedIn=true
     // else
     //   this.isSignedIn=false
+    // console.log(this.auth.getCurrentUserId())
   }
 
   signingIn(){

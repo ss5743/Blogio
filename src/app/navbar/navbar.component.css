@@ -5,6 +5,12 @@
 #home-name{
   font-size:xx-large ;
 }
+mat-toolbar{
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
 /* #home{
   height: 40px;
